@@ -71,9 +71,13 @@ class Aliment
     #[ORM\ManyToMany(targetEntity: article::class, inversedBy: 'aliments')]
     private Collection $article;
 
+    #[ORM\ManyToMany(targetEntity: Receipe::class, mappedBy: 'aliments')]
+    private Collection $receipes;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
+        $this->receipes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -305,6 +309,33 @@ class Aliment
     public function removeArticle(article $article): self
     {
         $this->article->removeElement($article);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Receipe>
+     */
+    public function getReceipes(): Collection
+    {
+        return $this->receipes;
+    }
+
+    public function addReceipe(Receipe $receipe): self
+    {
+        if (!$this->receipes->contains($receipe)) {
+            $this->receipes->add($receipe);
+            $receipe->addAliment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReceipe(Receipe $receipe): self
+    {
+        if ($this->receipes->removeElement($receipe)) {
+            $receipe->removeAliment($this);
+        }
 
         return $this;
     }
