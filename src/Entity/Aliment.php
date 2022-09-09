@@ -74,6 +74,15 @@ class Aliment
     #[ORM\ManyToMany(targetEntity: Receipe::class, mappedBy: 'aliments')]
     private Collection $receipes;
 
+    #[ORM\Column(length: 255)]
+    private ?string $label = null;
+
+    #[ORM\Column]
+    private ?int $glycemic_index = null;
+
+    #[ORM\Column]
+    private ?int $glycemic_load = null;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -336,6 +345,42 @@ class Aliment
         if ($this->receipes->removeElement($receipe)) {
             $receipe->removeAliment($this);
         }
+
+        return $this;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): self
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    public function getGlycemicIndex(): ?int
+    {
+        return $this->glycemic_index;
+    }
+
+    public function setGlycemicIndex(int $glycemic_index): self
+    {
+        $this->glycemic_index = $glycemic_index;
+
+        return $this;
+    }
+
+    public function getGlycemicLoad(): ?int
+    {
+        return $this->glycemic_load;
+    }
+
+    public function setGlycemicLoad(int $glycemic_load): self
+    {
+        $this->glycemic_load = $glycemic_load;
 
         return $this;
     }

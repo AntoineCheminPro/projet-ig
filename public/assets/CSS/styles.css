@@ -1,0 +1,25 @@
+H1 {
+    color: red;
+}
+
+.navbar {
+    border-bottom: 0.3rem solid red;
+
+}
+
+.title {
+    /* border-right: 0.1em solid red; */
+    margin: 0.2rem;
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.icones {
+    height: 30px;
+    width: auto;
+}
