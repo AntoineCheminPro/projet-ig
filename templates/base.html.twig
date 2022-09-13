@@ -1,128 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+       Glycemique.com
+      {% endblock %}
+    </title>
+    <link rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {# Feuilles de styles #}
-        <link  rel="stylesheet" href="{{ asset('assets/CSS/bootstrap.min.css') }}">
-       
-        <link  rel="stylesheet" href="{{ asset('assets/CSS/styles.css') }}">
+    {# Feuilles de styles #}
+    <link rel="stylesheet" href="{{ asset('assets/CSS/bootstrap.min.css') }}" />
 
-        {# fichiers js #}
-        <script src="{{ asset('assets/JS/bootstrap.bundle.min.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('assets/CSS/styles.css') }}" />
 
-        {% block stylesheets %}
+    {# fichiers js #}
+    <script src="{{ asset('assets/JS/bootstrap.bundle.min.js') }}"
+      defer></script>
 
-        {% endblock %}
-        
-        {% block javascripts %}
-        <script src="{{ asset('assets/JS/scripts.js') }}" defer></script>
-        
-        {% endblock %}
-    </head>
-    <body>
-        {% block header %}
-        <header class="d-flex">
-            <h1 class="col-2 px-3 title">glycemique.com</h1>
-            <div class="col-7"></div>
-            <form class="d-flex col-3 m-1" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </header>
-        {% endblock %}
-        {% block navbar %}
-        <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-        {% endblock %}
+    {% block stylesheets %}
 
-        {% block body %}
+    {% endblock %}
 
-        {% endblock %}
+    {% block javascripts %}
+      <script src="{{ asset('assets/JS/scripts.js') }}" defer></script>
+    {% endblock %}
+  </head>
+  <body>
+    {% include '_partials/_header.html.twig' %}
+    {% block navbar %}
+      {% include '_partials/_nav.html.twig' %}
+    {% endblock %}
 
-        {% block footer %}
+    {% block main %}
+      <main></main>
+    {% endblock %}
 
-        <footer class=" pt-4 pt-md-5 border-top bg-dark text-white">
-		<div class="row">
-			<div class="col-12 col-md">
-				<p class="d-block text-center">&copy; Glycemique.com - Decembre 2022</p>
-				<p class="d-block text-center pl-3">Réalisation Antoine Chemin</p>
-			</div>
-			<div class="col-6 col-md ">
-				<h5>Features</h5>
-				<ul class="list-unstyled text-small text-white">
-					<li>
-						<a class="text-white" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Cool stuff</a>
-					</li>
-					<li>
-						<a class="text-white" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Random feature</a>
-					</li>
-				</ul>
-			</div>
-			<div class="col-6 col-md">
-				<h5>Resources</h5>
-				<ul class="list-unstyled text-small text-white">
-					<li>
-						<a class="text-white" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Resource</a>
-					</li>
-					<li>
-						<a class="text-white" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Resource name</a>
-					</li>
-				</ul>
-			</div>
-			<div class="col-6 col-md">
-				<h5>About</h5>
-				 <ul class="flex fullCenter">
-                    <li>
-                    <a href="https://twitter.com">
-                        <img class="icones" src="images/icoTwitter.png" alt="logo twitter clicable">
-                    </a>
-                    <a href="https://www.facebook.com/">
-                        <img class="icones" src="images/icoFacebook.png" alt="logo facebook clicable">
-                    </a>
-                    <a href="https://www.instagram.com/">
-                        <img class="icones" src="images/icoInstagram.png" alt="logo instaram clicable">
-                    </a>
-                    </li>
-                </ul>
-			</div>
-		</div>
-	</footer>
-        {% endblock %}
-
-
-    </body>
+    {% block footer %}
+      {% include '_partials/_footer.html.twig' %}
+    {% endblock %}
+  </body>
 </html>

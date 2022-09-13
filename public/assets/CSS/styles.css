@@ -2,6 +2,11 @@ H1 {
     color: red;
 }
 
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
 .navbar {
     border-bottom: 0.3rem solid red;
 
@@ -12,6 +17,9 @@ H1 {
     margin: 0.2rem;
 }
 
+main{
+    min-height: 65vh;
+}
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
@@ -23,3 +31,7 @@ H1 {
     height: 30px;
     width: auto;
 }
+
+.nolist {
+    list-style: none;
+  }
