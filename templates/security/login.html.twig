@@ -17,11 +17,13 @@
         {% endif %}
         <div class="container">
             <h1 class="h3 m-3 font-weight-normal text-center">Connectez-vous !</h1>
-        
-            <label for="inputEmail">Adresse mail</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control col-6 my-2" autocomplete="email" required autofocus>
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control col-6 my-2" autocomplete="current-password" required>
+            <div class="row justify-content-center v-100">
+                <label for="inputEmail" class="text-center m-3">Adresse mail</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control w-50 my-2" autocomplete="email" required autofocus>
+                
+                <label for="inputPassword" class="text-center m-3">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control w-50 my-2" autocomplete="current-password" required>
+            </div>
 
             <input type="hidden" name="_csrf_token"
                 value="{{ csrf_token('authenticate') }}"
