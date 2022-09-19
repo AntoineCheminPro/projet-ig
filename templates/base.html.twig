@@ -28,15 +28,11 @@
       <script src="{{ asset('assets/JS/scripts.js') }}" defer></script>
     {% endblock %}
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
       {% include '_partials/_header.html.twig' %}
-    {% block navbar %}
       {% include '_partials/_nav.html.twig' %}
 
-    {% endblock %}
-
     {% block main %}
-      <main></main>
     {% endblock %}
 
     {% block footer %}
