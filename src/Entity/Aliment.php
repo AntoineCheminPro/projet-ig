@@ -16,45 +16,59 @@ class Aliment
     #[ORM\Column]
     private ?int $id = null;
 
+    // id
     #[ORM\Column(nullable: true)]
     private ?float $joules = null;
 
+    // calories
     #[ORM\Column(nullable: true)]
     private ?float $calories = null;
 
+    // glucides
     #[ORM\Column(nullable: true)]
     private ?float $carbohydrate = null;
 
+    // amidon
     #[ORM\Column(nullable: true)]
     private ?float $starch = null;
 
+    // sucres
     #[ORM\Column(nullable: true)]
     private ?float $sugars = null;
 
+    // fibres
     #[ORM\Column(nullable: true)]
     private ?float $dietary_fibres = null;
 
+    // proteines
     #[ORM\Column(nullable: true)]
     private ?float $proteins = null;
 
+    // lipides
     #[ORM\Column(nullable: true)]
     private ?float $lipids = null;
 
+    // graisses saturées
     #[ORM\Column(nullable: true)]
     private ?float $saturated_fats = null;
 
+    // omega 3
     #[ORM\Column(nullable: true)]
     private ?float $omega_3 = null;
 
+    // omega 6
     #[ORM\Column(nullable: true)]
     private ?float $omega_6 = null;
 
+    // omega 9
     #[ORM\Column(nullable: true)]
     private ?float $omega_9 = null;
 
+    // eau
     #[ORM\Column(nullable: true)]
     private ?float $water = null;
 
+    // cendres
     #[ORM\Column]
     private ?float $ashes = null;
 
@@ -77,9 +91,11 @@ class Aliment
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
+    // index glycémique
     #[ORM\Column]
     private ?int $glycemic_index = null;
 
+    // charge glycémique
     #[ORM\Column]
     private ?int $glycemic_load = null;
 
