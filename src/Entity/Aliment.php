@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+// TRAITS
 use App\Repository\AlimentRepository;
 use App\Entity\Trait\SourcesTrait;
 use App\Entity\Trait\ArticleTrait;
@@ -119,7 +120,7 @@ class Aliment
     {
         $this->article = new ArrayCollection();
         $this->receipes = new ArrayCollection();
-        // $this->created_at = new DateTimeImmutable();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int

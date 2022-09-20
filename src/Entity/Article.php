@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+// TRAITS
 use App\Entity\Trait\SourcesTrait;
 use App\Entity\Trait\ReciepeTrait;
 use App\Entity\Trait\UserTrait;
@@ -50,9 +51,12 @@ class Article
     #[ORM\ManyToMany(targetEntity: Receipe::class, mappedBy: 'article')]
     private Collection $receipes;
 
+    // initialisation du constructeur avec la date du jour
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+
     }
 
     public function getId(): ?int

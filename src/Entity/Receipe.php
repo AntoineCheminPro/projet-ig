@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+// TRAITS
 use App\Entity\Trait\SourcesTrait;
 use App\Entity\Trait\ContentTrait;
 use App\Entity\Trait\UserTrait;
@@ -48,10 +49,12 @@ class Receipe
     #[ORM\ManyToOne(inversedBy: 'reciepe')]
     private ?ReceipeAlimentQuantity $receipeAlimentQuantity = null;
 
-   
+    // initialisation du constructeur avec la date du jour
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+
     }
 
     public function getId(): ?int
