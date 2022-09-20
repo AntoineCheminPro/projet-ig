@@ -1,10 +1,12 @@
 <?php 
 
 namespace App\Entity\Trait;
+use Doctrine\DBAL\Types\Types;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
-trait ContentTRait 
+trait ContentTrait 
 {
 
     #[ORM\Column(type: Types::TEXT)]

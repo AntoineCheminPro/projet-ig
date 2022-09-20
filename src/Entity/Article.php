@@ -2,6 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\SourcesTrait;
+use App\Entity\Trait\ReciepeTrait;
+use App\Entity\Trait\UserTrait;
+use App\Entity\Trait\DescriptionTrait;
+use App\Entity\Trait\ContentTrait;
+use App\Entity\Trait\AlimentTrait;
+
+use App\Repository\AlimentRepository;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,10 +20,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     use SourcesTrait;
-    use ContentTRait;
+    use ContentTrait;
     use UserTrait;
     use AlimentTrait;
-    
+
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

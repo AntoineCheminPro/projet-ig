@@ -2,6 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\SourcesTrait;
+use App\Entity\Trait\ContentTrait;
+use App\Entity\Trait\UserTrait;
+use App\Entity\Trait\DescriptionTrait;
+
 use App\Repository\ReceipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,9 +18,8 @@ class Receipe
 {
 
     use SourcesTrait;
-    use ContentTRait;
+    use ContentTrait;
     use UserTrait;
-    use AlimentTrait;
     use DescriptionTrait;
 
 
@@ -29,14 +33,14 @@ class Receipe
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Aliment::class, inversedBy: 'receipes')]
-    private Collection $aliments;
-
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $cooking_time = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $number_of_persons = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reciepe')]
+    private ?ReceipeAlimentQuantity $receipeAlimentQuantity = null;
 
    
     public function __construct()
@@ -69,6 +73,18 @@ class Receipe
     public function setNumberOfPersons(int $number_of_persons): self
     {
         $this->number_of_persons = $number_of_persons;
+
+        return $this;
+    }
+
+    public function getReceipeAlimentQuantity(): ?ReceipeAlimentQuantity
+    {
+        return $this->receipeAlimentQuantity;
+    }
+
+    public function setReceipeAlimentQuantity(?ReceipeAlimentQuantity $receipeAlimentQuantity): self
+    {
+        $this->receipeAlimentQuantity = $receipeAlimentQuantity;
 
         return $this;
     }

@@ -3,6 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\AlimentRepository;
+use App\Entity\Trait\SourcesTrait;
+use App\Entity\Trait\ArticleTrait;
+use App\Entity\Trait\ReciepeTrait;
+use App\Entity\Trait\UserTrait;
+use App\Entity\Trait\DescriptionTrait;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -99,6 +105,9 @@ class Aliment
     // charge glycémique
     #[ORM\Column]
     private ?int $glycemic_load = null;
+
+    #[ORM\ManyToOne(inversedBy: 'aliment')]
+    private ?ReceipeAlimentQuantity $receipeAlimentQuantity = null;
 
     public function __construct()
     {
@@ -311,6 +320,18 @@ class Aliment
     public function setGlycemicLoad(int $glycemic_load): self
     {
         $this->glycemic_load = $glycemic_load;
+
+        return $this;
+    }
+
+    public function getReceipeAlimentQuantity(): ?ReceipeAlimentQuantity
+    {
+        return $this->receipeAlimentQuantity;
+    }
+
+    public function setReceipeAlimentQuantity(?ReceipeAlimentQuantity $receipeAlimentQuantity): self
+    {
+        $this->receipeAlimentQuantity = $receipeAlimentQuantity;
 
         return $this;
     }
