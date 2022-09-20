@@ -8,6 +8,8 @@ use App\Entity\Trait\UserTrait;
 use App\Entity\Trait\DescriptionTrait;
 use App\Entity\Trait\ContentTrait;
 use App\Entity\Trait\AlimentTrait;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\LastModificationTrait;
 
 use App\Repository\AlimentRepository;
 use App\Repository\ArticleRepository;
@@ -23,6 +25,8 @@ class Article
     use ContentTrait;
     use UserTrait;
     use AlimentTrait;
+    use CreatedAtTrait;
+    use LastModificationTrait;
 
 
     #[ORM\Id]

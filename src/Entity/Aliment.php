@@ -8,6 +8,9 @@ use App\Entity\Trait\ArticleTrait;
 use App\Entity\Trait\ReciepeTrait;
 use App\Entity\Trait\UserTrait;
 use App\Entity\Trait\DescriptionTrait;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\LastModificationTrait;
+
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,6 +25,9 @@ class Aliment
     use ReciepeTrait;
     use UserTrait;
     use DescriptionTrait;
+    use CreatedAtTrait;
+    use LastModificationTrait;
+
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -113,6 +119,7 @@ class Aliment
     {
         $this->article = new ArrayCollection();
         $this->receipes = new ArrayCollection();
+        // $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int

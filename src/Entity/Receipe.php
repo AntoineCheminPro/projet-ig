@@ -6,6 +6,9 @@ use App\Entity\Trait\SourcesTrait;
 use App\Entity\Trait\ContentTrait;
 use App\Entity\Trait\UserTrait;
 use App\Entity\Trait\DescriptionTrait;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\LastModificationTrait;
+
 
 use App\Repository\ReceipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,6 +24,9 @@ class Receipe
     use ContentTrait;
     use UserTrait;
     use DescriptionTrait;
+    use CreatedAtTrait;
+    use LastModificationTrait;
+
 
 
 
