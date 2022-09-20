@@ -11,6 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AlimentRepository::class)]
 class Aliment
 {
+    use SourcesTrait;
+    use ArticleTrait;
+    use ReciepeTrait;
+    use UserTrait;
+    use DescriptionTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -19,6 +25,10 @@ class Aliment
     // id
     #[ORM\Column(nullable: true)]
     private ?float $joules = null;
+
+    #[ORM\ManyToOne(inversedBy: 'aliment')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     // calories
     #[ORM\Column(nullable: true)]
@@ -69,20 +79,11 @@ class Aliment
     private ?float $water = null;
 
     // cendres
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $ashes = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $sources = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
-
-    #[ORM\ManyToMany(targetEntity: article::class, inversedBy: 'aliments')]
+   #[ORM\ManyToMany(targetEntity: article::class, inversedBy: 'aliments')]
     private Collection $article;
 
     #[ORM\ManyToMany(targetEntity: Receipe::class, mappedBy: 'aliments')]
@@ -277,94 +278,7 @@ class Aliment
 
         return $this;
     }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getSources(): ?string
-    {
-        return $this->sources;
-    }
-
-    public function setSources(?string $sources): self
-    {
-        $this->sources = $sources;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, article>
-     */
-    public function getArticle(): Collection
-    {
-        return $this->article;
-    }
-
-    public function addArticle(article $article): self
-    {
-        if (!$this->article->contains($article)) {
-            $this->article->add($article);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(article $article): self
-    {
-        $this->article->removeElement($article);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Receipe>
-     */
-    public function getReceipes(): Collection
-    {
-        return $this->receipes;
-    }
-
-    public function addReceipe(Receipe $receipe): self
-    {
-        if (!$this->receipes->contains($receipe)) {
-            $this->receipes->add($receipe);
-            $receipe->addAliment($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReceipe(Receipe $receipe): self
-    {
-        if ($this->receipes->removeElement($receipe)) {
-            $receipe->removeAliment($this);
-        }
-
-        return $this;
-    }
-
+   
     public function getLabel(): ?string
     {
         return $this->label;
